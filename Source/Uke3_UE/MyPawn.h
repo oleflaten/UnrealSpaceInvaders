@@ -54,6 +54,9 @@ public:
     
     bool Died{false};
     
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HUD Variables")
+    int Ammo = 30;
+    
     UPROPERTY(EditAnywhere)
     float SpeedScale = 1.f;
     float TimeBeforeAccelerate = 1.f;
@@ -63,11 +66,15 @@ public:
     void OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult);
     
     UPROPERTY(EditAnywhere)
-    AActor* TopDownCamera = nullptr;
+    ACameraActor* TopDownCamera = nullptr;
     
     UPROPERTY(EditAnywhere)
     USoundBase* ShootSound;
     
-    UPROPERTY(EditAnywhere)
-    USceneComponent* DummySceneComponent;
+    //UPROPERTY(EditAnywhere)
+    //USceneComponent* DummySceneComponent;
+    
+private:
+    void GrowShrink(float DeltaTime);
+    void Movement(float DeltaTime);
 };

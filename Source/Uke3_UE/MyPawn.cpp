@@ -28,7 +28,7 @@ AMyPawn::AMyPawn()
     //TopDownCamera->SetupAttachment(RootComponent);
     
     //CollisionBox = this->FindComponentByClass<UBoxComponent>();
-    DummySceneComponent = NewObject<USceneComponent>();//USceneComponent();
+    //DummySceneComponent = NewObject<USceneComponent>();//USceneComponent();
 }
 
 // Called when the game starts or when spawned
@@ -72,7 +72,7 @@ void AMyPawn::BeginPlay()
     PlayerController->bShowMouseCursor = true;
     PlayerController->bEnableClickEvents = true;
     PlayerController->bEnableMouseOverEvents = true;
-    PlayerController->SetAudioListenerOverride(DummySceneComponent, FVector(0.f), FRotator(0.f));
+    //PlayerController->SetAudioListenerOverride(DummySceneComponent, FVector(0.f), FRotator(0.f));
 }
 
 // Called every frame
@@ -80,7 +80,21 @@ void AMyPawn::Tick( float DeltaTime )
 {
     Super::Tick( DeltaTime );
     // Handle growing and shrinking based on our "Grow" action
+    GrowShrink(DeltaTime);
     
+    // Handle movement based on our "MoveX" and "MoveY" axes
+    Movement(DeltaTime);
+}
+
+// Called to bind functionality to input
+void AMyPawn::SetupPlayerInputComponent(class UInputComponent* InputComponent)
+{
+    Super::SetupPlayerInputComponent(InputComponent);
+    
+}
+
+void AMyPawn::GrowShrink(float DeltaTime)
+{
     float CurrentScale = OurVisibleComponent->GetComponentScale().X;
     //UE_LOG(LogTemp, Warning, TEXT("Current Scale %d!"), CurrentScale);
     if (bGrowing)
@@ -96,9 +110,10 @@ void AMyPawn::Tick( float DeltaTime )
     // Make sure we never drop below our starting size, or increase past double size.
     CurrentScale = FMath::Clamp(CurrentScale, 1.0f, 2.0f);
     OurVisibleComponent->SetWorldScale3D(FVector(CurrentScale));
-    
-    // Handle movement based on our "MoveX" and "MoveY" axes
-    
+}
+
+void AMyPawn::Movement(float DeltaTime)
+{
     if (!CurrentVelocity.IsZero())
     {
         TimeAccellerating += DeltaTime;
@@ -119,25 +134,8 @@ void AMyPawn::Tick( float DeltaTime )
     FRotator TempRotation = GetActorRotation();
     TempRotation.Yaw += CurrentRotation;
     SetActorRotation(TempRotation);
-    
-    
-    //Update SoundListener:
-    //GetWorld()->GetFirstPlayerController()->SetAudioListenerOverride(this, GetActorLocation(), GetActorRotation());
-    FVector SoundPosition;
-    FVector SoundFrontDirection;
-    FVector SoundRightDirection;
-    GetWorld()->GetFirstPlayerController()->GetAudioListenerPosition(SoundPosition, SoundFrontDirection, SoundRightDirection);
-    
-    //UE_LOG(LogTemp, Warning, TEXT("SoundListener position %s, rotation %s"), *SoundPosition.ToString(), *SoundFrontDirection.ToString());
-}
 
-// Called to bind functionality to input
-void AMyPawn::SetupPlayerInputComponent(class UInputComponent* InputComponent)
-{
-    Super::SetupPlayerInputComponent(InputComponent);
-    
 }
-
 void AMyPawn::Move_XAxis(float AxisValue)
 {
     // Move at 100 units per second forward or backward
