@@ -134,7 +134,7 @@ void AMyPawn::Movement(float DeltaTime)
     FRotator TempRotation = GetActorRotation();
     TempRotation.Yaw += CurrentRotation;
     SetActorRotation(TempRotation);
-
+    
 }
 void AMyPawn::Move_XAxis(float AxisValue)
 {
@@ -168,16 +168,20 @@ void AMyPawn::StopGrowing()
 
 void AMyPawn::Shoot()
 {
-    UWorld* World = GetWorld();	//Henter peker til spillverdenen
-    if (World)			//tester at verdenen finnes
+    if (Ammo > 0)
     {
-        FVector Location = GetActorLocation();   //Henter plasseringen til PlayerPawn
-        //Kan settes til annen plassering for det du vil spawne
-        World->SpawnActor<ABullet>(BulletBlueprint, Location, GetActorRotation());
-        
-        //Play Sound
-        UGameplayStatics::PlaySound2D(World, ShootSound, 1.f, 1.f, 0.f);
-        //        UGameplayStatics::PlaySoundAtLocation(World, ShootSound, GetActorLocation());
+        Ammo--;
+        UWorld* World = GetWorld();	//Henter peker til spillverdenen
+        if (World)			//tester at verdenen finnes
+        {
+            FVector Location = GetActorLocation();   //Henter plasseringen til PlayerPawn
+            //Kan settes til annen plassering for det du vil spawne
+            World->SpawnActor<ABullet>(BulletBlueprint, Location, GetActorRotation());
+            
+            //Play Sound
+            UGameplayStatics::PlaySound2D(World, ShootSound, 1.f, 1.f, 0.f);
+            //        UGameplayStatics::PlaySoundAtLocation(World, ShootSound, GetActorLocation());
+        }
     }
 }
 

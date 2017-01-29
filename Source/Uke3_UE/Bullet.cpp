@@ -48,15 +48,8 @@ void ABullet::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *OtherA
     //UE_LOG(LogTemp, Warning, TEXT("Bullet Overlap %s"), *OtherActor->GetName())
     if(OtherActor->IsA(AEnemy::StaticClass()))
     {
-        Score += 10;
-        //UE_LOG(LogTemp, Warning, TEXT("Score %d"), Score)
-        if(GEngine)
-        {
-            static const FString ScoreMessage(TEXT("Score: "));
-            GEngine->AddOnScreenDebugMessage(0, 15.0f, FColor::Yellow, ScoreMessage + FString::FromInt(Score));
-            //GEngine->AddOnScreenDebugMessage(0, 5.f, FColor::Red, FString::FromInt(Score));
-        }
-        OtherActor->Destroy();
+        //Score += 10;
+        Cast<AEnemy>(OtherActor)->ImHit(); //OtherActor->Destroy();
         //PartikkelFX:
         UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplotionFX, GetTransform(), true);
         
@@ -64,10 +57,11 @@ void ABullet::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *OtherA
         //UGameplayStatics::PlaySound2D(GetWorld(), ExplotionSound, 1.f, 1.f, 0.f);
         UGameplayStatics::PlaySoundAtLocation(GetWorld(), ExplotionSound, GetActorLocation());
 
+        //Destroy Bullet:
         Destroy();
     }
 }
 
 //Setter verdi og initierer statisk Score-variabel:
-int ABullet::Score = 0;
+//int ABullet::Score = 0;
 

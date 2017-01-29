@@ -43,5 +43,5 @@ private:
                    UPrimitiveComponent *OtherComponent, int32 OtherBodyIndex,
                    bool bFromSweep, const FHitResult &SweepResult);
     
-    static int Score;
+    //static int Score;
 };

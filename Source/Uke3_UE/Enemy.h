@@ -21,6 +21,12 @@ public:
 	virtual void Tick( float DeltaSeconds ) override;
     
     FVector MoveDirection = FVector(1.f, 0.f, 0.f);
+    
+    void ImHit();
+    
+    AGameModeBase *GameModePointer;
+    
+    int PlaceInArray{0};
 
 private:
     UPROPERTY(EditAnywhere)

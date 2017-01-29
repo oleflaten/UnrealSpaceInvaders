@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Uke3_UE.h"
+#include "Uke3_UEGameModeBase.h"
 #include "Enemy.h"
 
 
@@ -35,6 +36,12 @@ void AEnemy::Tick( float DeltaTime )
     {
         this->Destroy();
     }
+}
 
+void AEnemy::ImHit()
+{
+    UE_LOG(LogTemp, Warning, TEXT("Enemy hit! Im going down!"))
+    Cast<AUke3_UEGameModeBase>(GameModePointer)->DeleteEnemy(PlaceInArray);
+    Destroy();
 }
 
