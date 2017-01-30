@@ -42,4 +42,5 @@ private:
     TArray<class AEnemy*> EnemyArray;
     
     
+    
 };

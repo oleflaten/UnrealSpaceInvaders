@@ -73,6 +73,7 @@ void AMyPawn::BeginPlay()
     PlayerController->bEnableClickEvents = true;
     PlayerController->bEnableMouseOverEvents = true;
     //PlayerController->SetAudioListenerOverride(DummySceneComponent, FVector(0.f), FRotator(0.f));
+    
 }
 
 // Called every frame
@@ -176,7 +177,7 @@ void AMyPawn::Shoot()
         {
             FVector Location = GetActorLocation();   //Henter plasseringen til PlayerPawn
             //Kan settes til annen plassering for det du vil spawne
-            World->SpawnActor<ABullet>(BulletBlueprint, Location, GetActorRotation());
+            World->SpawnActor<ABullet>(BulletBlueprint, Location + FVector(0.4f, 0.f, 0.f), GetActorRotation());
             
             //Play Sound
             UGameplayStatics::PlaySound2D(World, ShootSound, 1.f, 1.f, 0.f);
