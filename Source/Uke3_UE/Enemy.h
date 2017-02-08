@@ -24,16 +24,16 @@ public:
     
     void ImHit();
     
-    AGameModeBase *GameModePointer;
+    //AGameModeBase *GameModePointer;
     
-    int PlaceInArray{0};
+    bool DeleteThisEnemy{false};
 
 private:
     UPROPERTY(EditAnywhere)
     float Speed = -50.f;
     
-    UPROPERTY(EditAnywhere)
-    UShapeComponent* RootBox = nullptr;
+    //UPROPERTY(EditAnywhere)
+    //UShapeComponent* RootBox = nullptr;
 
     UPROPERTY(EditAnywhere)
     float DestroyPlacement = -2000.f;

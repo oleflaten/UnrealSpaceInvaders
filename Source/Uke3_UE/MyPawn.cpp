@@ -194,7 +194,7 @@ void AMyPawn::ShootMore()
 void AMyPawn::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComponent,
                         int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult)
 {
-    UE_LOG(LogTemp, Warning, TEXT("Player Overlap"))
+    //UE_LOG(LogTemp, Warning, TEXT("Player Overlap"))
     if(OtherActor->IsA(AEnemy::StaticClass()))
     {
         Died = true;

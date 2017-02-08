@@ -12,10 +12,10 @@ ABullet::ABullet()
     PrimaryActorTick.bCanEverTick = true;
     
     //Collision object and RootObject
-    RootSphere = CreateDefaultSubobject<USphereComponent>(TEXT("MySphere"));
-    RootComponent = RootSphere;
-    RootSphere->bGenerateOverlapEvents = true;
-    RootSphere->OnComponentBeginOverlap.AddDynamic(this, &ABullet::OnOverlap);
+    //RootSphere =
+    RootComponent = CreateDefaultSubobject<USphereComponent>(TEXT("MySphere"));
+    //Cast<UShapeComponent>(RootComponent)->bGenerateOverlapEvents = true;
+    Cast<UShapeComponent>(RootComponent)->OnComponentBeginOverlap.AddDynamic(this, &ABullet::OnOverlap);
 }
 
 // Called when the game starts or when spawned

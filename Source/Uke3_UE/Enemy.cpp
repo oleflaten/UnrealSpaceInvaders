@@ -11,9 +11,9 @@ AEnemy::AEnemy()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
     //Collision object and RootObject
-    RootBox = CreateDefaultSubobject<UBoxComponent>(TEXT("MyEnemy"));
+    UShapeComponent* RootBox = CreateDefaultSubobject<UBoxComponent>(TEXT("MyEnemy"));
     RootComponent = RootBox;
-    RootBox->bGenerateOverlapEvents = true;
+    //RootBox->bGenerateOverlapEvents = true;
 }
 
 // Called when the game starts or when spawned
@@ -34,14 +34,18 @@ void AEnemy::Tick( float DeltaTime )
     
     if (NewLocation.X < DestroyPlacement)
     {
-        this->Destroy();
+        DeleteThisEnemy = true;
+        //this->Destroy();
     }
 }
 
 void AEnemy::ImHit()
 {
     UE_LOG(LogTemp, Warning, TEXT("Enemy hit! Im going down!"))
-    Cast<AUke3_UEGameModeBase>(GameModePointer)->DeleteEnemy(PlaceInArray);
-    Destroy();
+    //Cast<AUke3_UEGameModeBase>(GameModePointer)->DeleteEnemy(PlaceInArray);
+    SetActorHiddenInGame(true); //Skjuler bare det visuelle, men kolliderer fremdeles.
+    SetActorEnableCollision(false);
+    DeleteThisEnemy = true;
+    //Destroy();
 }
 
