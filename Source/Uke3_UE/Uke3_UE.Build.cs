@@ -4,7 +4,7 @@ using UnrealBuildTool;
 
 public class Uke3_UE : ModuleRules
 {
-	public Uke3_UE(TargetInfo Target)
+	public Uke3_UE(ReadOnlyTargetRules Target) : base (Target)
 	{
 		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore" });
 

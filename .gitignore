@@ -63,3 +63,4 @@ Intermediate/*
 
 # Cache files for the editor to use
 DerivedDataCache/*
+.DS_Store
