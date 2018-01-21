@@ -1,8 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Uke3_UE.h"
 #include "Uke3_UEGameModeBase.h"
+#include "Uke3_UE.h"
 #include "Enemy.h"
+#include "Engine/World.h"
 
 AUke3_UEGameModeBase::AUke3_UEGameModeBase()
 {

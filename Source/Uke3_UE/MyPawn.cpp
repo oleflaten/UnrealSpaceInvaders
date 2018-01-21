@@ -1,9 +1,15 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Uke3_UE.h"
 #include "MyPawn.h"
+#include "Uke3_UE.h"
 #include "Enemy.h"
 #include "Bullet.h"
+#include "Kismet/GameplayStatics.h"
+#include "Engine/World.h"
+#include "Components/BoxComponent.h"
+#include "Components/StaticMeshComponent.h"
+#include "Camera/CameraActor.h"
+#include "Components/InputComponent.h"
 
 
 // Sets default values
@@ -88,9 +94,9 @@ void AMyPawn::Tick( float DeltaTime )
 }
 
 // Called to bind functionality to input
-void AMyPawn::SetupPlayerInputComponent(class UInputComponent* InputComponent)
+void AMyPawn::SetupPlayerInputComponent(UInputComponent* mInputComponent)
 {
-    Super::SetupPlayerInputComponent(InputComponent);
+    Super::SetupPlayerInputComponent(mInputComponent);
     
 }
 

@@ -1,8 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "Uke3_UE.h"
 #include "Countdown.h"
-
+#include "Uke3_UE.h"
+#include "Components/TextRenderComponent.h"
+#include "Engine/World.h"
+#include "GameFramework/Actor.h"
+#include "Public/TimerManager.h"
 
 // Sets default values
 ACountdown::ACountdown()
@@ -24,7 +27,7 @@ void ACountdown::BeginPlay()
 {
 	Super::BeginPlay();
     UpdateTimerDisplay();
-    GetWorldTimerManager().SetTimer(CountdownTimerHandle, this, &ACountdown::AdvanceTimer, 1.0f, true);
+	GetWorld()->GetTimerManager().SetTimer(CountdownTimerHandle, this, &ACountdown::AdvanceTimer, 1.0f, true);
 	
 }
 
@@ -37,7 +40,7 @@ void ACountdown::Tick( float DeltaTime )
 
 void ACountdown::UpdateTimerDisplay()
 {
-    CountdownText->SetText(FString::FromInt(FMath::Max(CountdownTime, 0)));
+    CountdownText->SetText(FText::FromString(FString::FromInt(FMath::Max(CountdownTime, 0))));
 }
 
 void ACountdown::AdvanceTimer()
@@ -53,7 +56,7 @@ void ACountdown::AdvanceTimer()
     if (CountdownTime < 0)
     {
         //We're done counting down, so stop running the timer.
-        GetWorldTimerManager().ClearTimer(CountdownTimerHandle);
+		GetWorld()->GetTimerManager().ClearTimer(CountdownTimerHandle);
         Destroy();
     }
 }
@@ -61,6 +64,6 @@ void ACountdown::AdvanceTimer()
 void ACountdown::CountdownHasFinished()
 {
     //Change to a special readout
-    CountdownText->SetText(TEXT("GO!"));
+    CountdownText->SetText("GO!");
 }
 

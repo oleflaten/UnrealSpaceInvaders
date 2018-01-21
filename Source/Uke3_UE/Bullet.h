@@ -5,6 +5,8 @@
 #include "GameFramework/Actor.h"
 #include "Bullet.generated.h"
 
+class UShapeComponent;
+
 UCLASS()
 class UKE3_UE_API ABullet : public AActor
 {

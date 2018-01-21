@@ -5,6 +5,8 @@
 #include "GameFramework/Actor.h"
 #include "Countdown.generated.h"
 
+class UTextRenderComponent;
+
 UCLASS()
 class UKE3_UE_API ACountdown : public AActor
 {

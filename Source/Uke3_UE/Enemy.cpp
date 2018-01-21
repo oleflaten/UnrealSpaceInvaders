@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "Enemy.h"
 #include "Uke3_UE.h"
 #include "Uke3_UEGameModeBase.h"
-#include "Enemy.h"
-
+#include "Components/BoxComponent.h"
 
 // Sets default values
 AEnemy::AEnemy()

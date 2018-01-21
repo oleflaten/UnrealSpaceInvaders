@@ -5,6 +5,10 @@
 #include "GameFramework/Pawn.h"
 #include "MyPawn.generated.h"
 
+class ACameraActor;
+class UInputComponent;
+class ABullet;
+
 UCLASS()
 class UKE3_UE_API AMyPawn : public APawn
 {
@@ -22,10 +26,10 @@ public:
     virtual void Tick( float DeltaSeconds ) override;
     
     // Called to bind functionality to input
-    virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
+    virtual void SetupPlayerInputComponent(UInputComponent* mInputComponent) override;
     
     UPROPERTY(EditAnywhere)
-    USceneComponent* OurVisibleComponent;
+    UStaticMeshComponent* OurVisibleComponent;
     
     //UPROPERTY(EditAnywhere)
     //float CameraRotation = -5.f;
@@ -33,7 +37,7 @@ public:
     //UCameraComponent* OurCamera = nullptr;
     
     UPROPERTY(EditAnywhere, Category="Spawning")
-    TSubclassOf<class ABullet> BulletBlueprint;
+    TSubclassOf<ABullet> BulletBlueprint;
     
     UShapeComponent* CollisionBox = nullptr;
     

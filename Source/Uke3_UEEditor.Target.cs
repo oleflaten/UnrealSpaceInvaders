@@ -9,5 +9,8 @@ public class Uke3_UEEditorTarget : TargetRules
 	{
 		Type = TargetType.Editor;
 		ExtraModuleNames.Add("Uke3_UE");
+
+        bUseUnityBuild = false;
+        bUsePCHFiles = false;
 	}
 }
