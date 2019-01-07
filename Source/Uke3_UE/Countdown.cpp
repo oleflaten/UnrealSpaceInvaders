@@ -32,11 +32,11 @@ void ACountdown::BeginPlay()
 }
 
 // Called every frame
-void ACountdown::Tick( float DeltaTime )
-{
-	Super::Tick( DeltaTime );
+// void ACountdown::Tick( float DeltaTime )
+// {
+// 	Super::Tick( DeltaTime );
 
-}
+// }
 
 void ACountdown::UpdateTimerDisplay()
 {
