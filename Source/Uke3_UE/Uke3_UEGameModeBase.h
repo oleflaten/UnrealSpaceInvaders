@@ -5,9 +5,6 @@
 #include "GameFramework/GameModeBase.h"
 #include "Uke3_UEGameModeBase.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class UKE3_UE_API AUke3_UEGameModeBase : public AGameModeBase
 {

@@ -41,13 +41,13 @@ void AUke3_UEGameModeBase::Tick( float DeltaTime )
     
     EnemyTimer += DeltaTime;
     
-    //spawn extra enemy
+    // spawn extra enemy
     //    if (EnemyTimer >= SpawnDelay)
     //    {
     //        //UE_LOG(LogTemp, Warning, TEXT("Spawn Enemy"))
-    //
+    
     //        UWorld* World = GetWorld();
-    //
+    
     //        if(World)
     //        {
     //            FVector Location = FVector(1000.f, FMath::RandRange(-800.f, 800.f), 70.f);

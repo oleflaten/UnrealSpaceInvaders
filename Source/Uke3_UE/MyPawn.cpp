@@ -170,7 +170,6 @@ void AMyPawn::Shoot()
             
             //Play Sound
             UGameplayStatics::PlaySound2D(World, ShootSound, 1.f, 1.f, 0.f);
-            //        UGameplayStatics::PlaySoundAtLocation(World, ShootSound, GetActorLocation());
         }
     }
 }
