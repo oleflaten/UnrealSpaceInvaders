@@ -25,8 +25,6 @@ void AUke3_UEGameModeBase::BeginPlay()
             {
                 FVector Location = FVector((800.f - j * 200), (-1000.f + i * 200), 70.f);
                 AEnemy *tempEnemy = World->SpawnActor<AEnemy>(EnemyBlueprint, Location, FRotator::ZeroRotator);
-                //tempEnemy->GameModePointer = this;
-                //tempEnemy->PlaceInArray = ArraySize;
                 EnemyArray.Add(tempEnemy);
                 ArraySize ++;
             }
@@ -101,15 +99,3 @@ void AUke3_UEGameModeBase::Tick( float DeltaTime )
     }
 }
 
-//void AUke3_UEGameModeBase::DeleteEnemy(int PlaceInArray)
-//{
-//    //EnemyArray.RemoveAt(PlaceInArray);
-//    UE_LOG(LogTemp, Error, TEXT("Enemy down. Enemy Array is: %d "), EnemyArray.Num());
-//    ArraySize--;
-//    //Billig Winstate:
-//    if (ArraySize <= 0)
-//    {
-//        UE_LOG(LogTemp, Error, TEXT("You Won"));
-//        UGameplayStatics::SetGamePaused(GetWorld(), true);
-//    }
-//}

@@ -20,6 +20,7 @@ public:
 	virtual void BeginPlay() override;
 	
 	// Called every frame
+	//Not used in this class, so it can be deleted!
 	// virtual void Tick( float DeltaSeconds ) override;
     
     int32 CountdownTime;

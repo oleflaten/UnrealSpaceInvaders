@@ -15,9 +15,7 @@ ABullet::ABullet()
     PrimaryActorTick.bCanEverTick = true;
     
     //Collision object and RootObject
-    //RootSphere =
     RootComponent = CreateDefaultSubobject<USphereComponent>(TEXT("MySphere"));
-    //Cast<UShapeComponent>(RootComponent)->bGenerateOverlapEvents = true;
     Cast<UShapeComponent>(RootComponent)->OnComponentBeginOverlap.AddDynamic(this, &ABullet::OnOverlap);
 }
 
@@ -51,13 +49,11 @@ void ABullet::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *OtherA
     //UE_LOG(LogTemp, Warning, TEXT("Bullet Overlap %s"), *OtherActor->GetName())
     if(OtherActor->IsA(AEnemy::StaticClass()))
     {
-        //Score += 10;
         Cast<AEnemy>(OtherActor)->ImHit(); //OtherActor->Destroy();
         //PartikkelFX:
         UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ExplotionFX, GetTransform(), true);
         
         //SoundFX
-        //UGameplayStatics::PlaySound2D(GetWorld(), ExplotionSound, 1.f, 1.f, 0.f);
         UGameplayStatics::PlaySoundAtLocation(GetWorld(), ExplotionSound, GetActorLocation());
 
         //Destroy Bullet:
@@ -65,6 +61,4 @@ void ABullet::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *OtherA
     }
 }
 
-//Setter verdi og initierer statisk Score-variabel:
-//int ABullet::Score = 0;
 

@@ -19,7 +19,6 @@ ACountdown::ACountdown()
     RootComponent = CountdownText;
     
     CountdownTime = 3;
-
 }
 
 // Called when the game starts or when spawned
@@ -31,7 +30,7 @@ void ACountdown::BeginPlay()
 	
 }
 
-// Called every frame
+// Called every frame - not used
 // void ACountdown::Tick( float DeltaTime )
 // {
 // 	Super::Tick( DeltaTime );
@@ -49,8 +48,6 @@ void ACountdown::AdvanceTimer()
     UpdateTimerDisplay();
     if (CountdownTime < 1)
     {
-        //We're done counting down, so stop running the timer.
-        //GetWorldTimerManager().ClearTimer(CountdownTimerHandle);
         CountdownHasFinished();
     }
     if (CountdownTime < 0)

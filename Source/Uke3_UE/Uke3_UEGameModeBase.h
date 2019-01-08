@@ -40,7 +40,4 @@ private:
     int EnemyMoveDirection = 1; //Down, left, down, right
     
     TArray<class AEnemy*> EnemyArray;
-    
-    
-    
 };

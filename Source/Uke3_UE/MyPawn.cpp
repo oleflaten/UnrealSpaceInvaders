@@ -23,18 +23,10 @@ AMyPawn::AMyPawn()
     
     // Create a dummy root component we can attach things to.
     RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootComponent"));
-    // Create a camera and a visible object
-    //OurCamera = CreateDefaultSubobject<UCameraComponent>(TEXT("OurCamera"));
+    // Create a visible object
     OurVisibleComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("OurVisibleComponent"));
-    // Attach our camera and visible object to our root component. Offset and rotate the camera.
-    //OurCamera->SetupAttachment(RootComponent);
-    //OurCamera->SetRelativeLocation(FVector(-200.0f, 0.0f, 250.0f));
-    //OurCamera->SetRelativeRotation(FRotator(CameraRotation, 0.0f, 0.0f));
+ 
     OurVisibleComponent->SetupAttachment(RootComponent);
-    //TopDownCamera->SetupAttachment(RootComponent);
-    
-    //CollisionBox = this->FindComponentByClass<UBoxComponent>();
-    //DummySceneComponent = NewObject<USceneComponent>();//USceneComponent();
 }
 
 // Called when the game starts or when spawned
@@ -53,12 +45,8 @@ void AMyPawn::BeginPlay()
     InputComponent->BindAxis("MoveX", this, &AMyPawn::Move_XAxis);
     InputComponent->BindAxis("MoveY", this, &AMyPawn::Move_YAxis);
     InputComponent->BindAxis("RotateZ", this, &AMyPawn::RotateZ);
-    
-    //OurCamera->SetRelativeLocation(FVector(-250.0f, 0.0f, 250.0f));
-    //OurCamera->SetRelativeRotation(FRotator(CameraRotation, 0.0f, 0.0f));
-    
+        
     CollisionBox = this->FindComponentByClass<UBoxComponent>();
-    //CollisionBox->bGenerateOverlapEvents = true;
     
     if (CollisionBox)
     {
@@ -69,17 +57,13 @@ void AMyPawn::BeginPlay()
         UE_LOG(LogTemp, Warning, TEXT("CollisionBox not found!"));
     }
     
-    //TopDownCamera->SetupAttachment(RootComponent);
     APlayerController* PlayerController = GetWorld()->GetFirstPlayerController();
-    //PlayerController->PlayerCameraManager->
     PlayerController->SetViewTarget(TopDownCamera);
     
     //Mouse setup
     PlayerController->bShowMouseCursor = true;
     PlayerController->bEnableClickEvents = true;
-    PlayerController->bEnableMouseOverEvents = true;
-    //PlayerController->SetAudioListenerOverride(DummySceneComponent, FVector(0.f), FRotator(0.f));
-    
+    PlayerController->bEnableMouseOverEvents = true;   
 }
 
 // Called every frame
@@ -128,7 +112,6 @@ void AMyPawn::Movement(float DeltaTime)
         {
             SpeedScale += 0.05;
             SpeedScale > 5.0f ? SpeedScale = 4.0f : SpeedScale;   //SpeedScale aldri over 5.0
-            //SpeedScale = FMath::Clamp(SpeedScale, 1.f, 5.f);      //Dette gjør ikke det det skal...
         }
         FVector NewLocation = GetActorLocation() + (CurrentVelocity * SpeedScale * DeltaTime);
         SetActorLocation(NewLocation);

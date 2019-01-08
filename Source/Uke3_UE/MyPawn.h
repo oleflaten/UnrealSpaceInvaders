@@ -31,11 +31,6 @@ public:
     UPROPERTY(EditAnywhere)
     UStaticMeshComponent* OurVisibleComponent;
     
-    //UPROPERTY(EditAnywhere)
-    //float CameraRotation = -5.f;
-    
-    //UCameraComponent* OurCamera = nullptr;
-    
     UPROPERTY(EditAnywhere, Category="Spawning")
     TSubclassOf<ABullet> BulletBlueprint;
     
@@ -74,9 +69,6 @@ public:
     
     UPROPERTY(EditAnywhere)
     USoundBase* ShootSound;
-    
-    //UPROPERTY(EditAnywhere)
-    //USceneComponent* DummySceneComponent;
     
 private:
     void GrowShrink(float DeltaTime);

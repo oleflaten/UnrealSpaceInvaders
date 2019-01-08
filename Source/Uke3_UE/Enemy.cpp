@@ -13,14 +13,12 @@ AEnemy::AEnemy()
     //Collision object and RootObject
     UShapeComponent* RootBox = CreateDefaultSubobject<UBoxComponent>(TEXT("MyEnemy"));
     RootComponent = RootBox;
-    //RootBox->bGenerateOverlapEvents = true;
 }
 
 // Called when the game starts or when spawned
 void AEnemy::BeginPlay()
 {
-	Super::BeginPlay();
-	
+	Super::BeginPlay();	
 }
 
 // Called every frame
@@ -35,17 +33,15 @@ void AEnemy::Tick( float DeltaTime )
     if (NewLocation.X < DestroyPlacement)
     {
         DeleteThisEnemy = true;
-        //this->Destroy();
+
     }
 }
 
 void AEnemy::ImHit()
 {
     UE_LOG(LogTemp, Warning, TEXT("Enemy hit! Im going down!"))
-    //Cast<AUke3_UEGameModeBase>(GameModePointer)->DeleteEnemy(PlaceInArray);
     SetActorHiddenInGame(true); //Skjuler bare det visuelle, men kolliderer fremdeles.
     SetActorEnableCollision(false);
     DeleteThisEnemy = true;
-    //Destroy();
 }
 
