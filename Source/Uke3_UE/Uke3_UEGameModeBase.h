@@ -21,8 +21,6 @@ public:
     // Called every frame
     virtual void Tick( float DeltaSeconds ) override;
     
-    //void DeleteEnemy(int PlaceInArray);
-    
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HUD Variables")
     int ArraySize;
     
