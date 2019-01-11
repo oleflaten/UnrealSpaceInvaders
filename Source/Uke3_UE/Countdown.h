@@ -25,7 +25,7 @@ public:
     
     int32 CountdownTime;
     
-    UTextRenderComponent* CountdownText;
+    UTextRenderComponent* CountdownText{nullptr};
     
     void UpdateTimerDisplay();
     

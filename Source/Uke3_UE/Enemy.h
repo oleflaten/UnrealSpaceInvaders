@@ -28,10 +28,10 @@ public:
 
 private:
     UPROPERTY(EditAnywhere)
-    float Speed = -50.f;
+    float Speed{-50.f};
     
     UPROPERTY(EditAnywhere)
-    float DestroyPlacement = -2000.f;
+    float DestroyPlacement{-2000.f};
 
 	
 };

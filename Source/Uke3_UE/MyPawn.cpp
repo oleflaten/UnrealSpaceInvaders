@@ -185,7 +185,7 @@ void AMyPawn::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *OtherA
     //UE_LOG(LogTemp, Warning, TEXT("Player Overlap"))
     if(OtherActor->IsA(AEnemy::StaticClass()))
     {
-        Died = true;
+        bDied = true;
         this->SetActorHiddenInGame(true);
         UGameplayStatics::SetGamePaused(GetWorld(), true);
     }
@@ -193,7 +193,7 @@ void AMyPawn::OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *OtherA
 
 void AMyPawn::Restart()
 {
-    if (Died)
+    if (bDied)
     {
         UGameplayStatics::OpenLevel(this, FName(*GetWorld()->GetName()), false);
     }

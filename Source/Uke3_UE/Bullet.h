@@ -22,21 +22,21 @@ public:
     
 private:
     UPROPERTY(EditAnywhere)
-    float Speed = 400.f;
+    float Speed{400.f};
     
     UPROPERTY(EditAnywhere)
-    float TimeBeforeDestroy = 5.f;
+    float TimeBeforeDestroy{5.f};
     
     float TimeLived{0};
     
-    UPROPERTY(EditAnywhere)
-    UShapeComponent* RootSphere = nullptr;
+    // UPROPERTY(EditAnywhere)
+    // UShapeComponent* RootSphere = nullptr;
     
     UPROPERTY(EditAnywhere)
-    UParticleSystem *ExplotionFX = nullptr;
+    UParticleSystem *ExplotionFX{nullptr};
     
     UPROPERTY(EditAnywhere)
-    USoundBase* ExplotionSound;
+    USoundBase* ExplotionSound{nullptr};
     
     UFUNCTION()
     void OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *OtherActor,

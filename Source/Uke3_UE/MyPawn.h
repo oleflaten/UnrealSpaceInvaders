@@ -31,10 +31,10 @@ public:
     UPROPERTY(EditAnywhere)
     UStaticMeshComponent* OurVisibleComponent;
     
-    UPROPERTY(EditAnywhere, Category="Spawning")
+    UPROPERTY(EditAnywhere, Category = "Spawning")
     TSubclassOf<ABullet> BulletBlueprint;
     
-    UShapeComponent* CollisionBox = nullptr;
+    UShapeComponent* CollisionBox{nullptr};
     
     //Input functions
     void Move_XAxis(float AxisValue);
@@ -48,27 +48,27 @@ public:
     
     //Input variables
     FVector CurrentVelocity;
-    float CurrentRotation;
-    bool bGrowing;
+    float CurrentRotation{0.f};
+    bool bGrowing{false};
     
-    bool Died{false};
+    bool bDied{false};
     
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HUD Variables")
-    int Ammo = 30;
+    int Ammo{30};
     
     UPROPERTY(EditAnywhere)
-    float SpeedScale = 1.f;
-    float TimeBeforeAccelerate = 1.f;
+    float SpeedScale{1.f};
+    float TimeBeforeAccelerate{1.f};
     float TimeAccellerating{0.f};
     
     UFUNCTION()
     void OnOverlap(UPrimitiveComponent* OverlappedComponent, AActor *OtherActor, UPrimitiveComponent *OtherComponent, int32 OtherBodyIndex, bool bFromSweep, const FHitResult &SweepResult);
     
     UPROPERTY(EditAnywhere)
-    ACameraActor* TopDownCamera = nullptr;
+    ACameraActor* TopDownCamera{nullptr};
     
     UPROPERTY(EditAnywhere)
-    USoundBase* ShootSound;
+    USoundBase* ShootSound{nullptr};
     
 private:
     void GrowShrink(float DeltaTime);

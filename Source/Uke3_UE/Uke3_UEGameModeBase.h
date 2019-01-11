@@ -19,20 +19,20 @@ public:
     virtual void Tick( float DeltaSeconds ) override;
     
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "HUD Variables")
-    int ArraySize;
+    int ArraySize{0};
     
 private:
     UPROPERTY(EditAnywhere, Category = "Spawning")
     TSubclassOf<class AEnemy> EnemyBlueprint;
     
     UPROPERTY(EditAnywhere, Category = "Spawning")
-    float SpawnDelay = 2.f;
+    float SpawnDelay{2.f};
 
     float EnemyTimer{0.f};
     
     float EnemyTurnTime{0.0f};
     
-    int EnemyMoveDirection = 1; //Down, left, down, right
+    int EnemyMoveDirection{1}; //Down, left, down, right
     
     TArray<class AEnemy*> EnemyArray;
 };
