@@ -26,7 +26,7 @@ public:
     virtual void Tick( float DeltaSeconds ) override;
     
     // Called to bind functionality to input
-    virtual void SetupPlayerInputComponent(UInputComponent* mInputComponent) override;
+    // virtual void SetupPlayerInputComponent(UInputComponent* mInputComponent) override;
     
     UPROPERTY(EditAnywhere)
     UStaticMeshComponent* OurVisibleComponent;

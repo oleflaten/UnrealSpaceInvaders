@@ -78,11 +78,10 @@ void AMyPawn::Tick( float DeltaTime )
 }
 
 // Called to bind functionality to input
-void AMyPawn::SetupPlayerInputComponent(UInputComponent* mInputComponent)
-{
-    Super::SetupPlayerInputComponent(mInputComponent);
-    
-}
+// void AMyPawn::SetupPlayerInputComponent(UInputComponent* mInputComponent)
+// {
+//     Super::SetupPlayerInputComponent(mInputComponent);
+// }
 
 void AMyPawn::GrowShrink(float DeltaTime)
 {
