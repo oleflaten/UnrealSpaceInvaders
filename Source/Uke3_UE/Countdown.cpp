@@ -5,7 +5,6 @@
 #include "Components/TextRenderComponent.h"
 #include "Engine/World.h"
 #include "GameFramework/Actor.h"
-#include "Public/TimerManager.h"
 
 // Sets default values
 ACountdown::ACountdown()
@@ -39,7 +38,7 @@ void ACountdown::BeginPlay()
 
 void ACountdown::UpdateTimerDisplay()
 {
-    CountdownText->SetText(FText::FromString(FString::FromInt(FMath::Max(CountdownTime, 0))));
+    CountdownText->SetText(FText::AsNumber(CountdownTime));
 }
 
 void ACountdown::AdvanceTimer()
@@ -61,6 +60,6 @@ void ACountdown::AdvanceTimer()
 void ACountdown::CountdownHasFinished()
 {
     //Change to a special readout
-    CountdownText->SetText("GO!");
+    CountdownText->SetText(INVTEXT("GO!")); //INVTEXT == text that does not need translation / localization
 }
 
